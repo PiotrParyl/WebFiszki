@@ -1,6 +1,6 @@
 from flask import Flask, render_template
-
-
+import mysql.connector
+from setings import *
 
 
 
@@ -24,7 +24,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 
-    return render_template("home.html",  )
+    return render_template("home.html"  )
 
 
 if __name__==("__main__"):

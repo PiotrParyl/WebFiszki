@@ -1,6 +1,8 @@
 from setings import *
 import mysql.connector
 
+from test_0 import fiszki_make
+
 #======================= bd.connection #=======================
 
 db = mysql.connector.connect(
@@ -226,7 +228,7 @@ def introducing():
 def main_game():
 
 
-    fiszki_game('tomek','twojastara')
+    fiszki_make('tomek','twojastara')
 
 
 

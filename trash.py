@@ -1,8 +1,3 @@
-host="178.79.191.194"
-user="maczo_wolna"
-passwd="Pomidor123!@#"
-database="webfiszki_db"
-
 from setings import *
 import mysql.connector
 from time import sleep
@@ -18,10 +13,12 @@ db = mysql.connector.connect(
 
 mycursor = db.cursor()
 
+slowo_pl = "kurwa"
+slowo_ang = "fuk"
 
-def select_from_db(what_select,  where_select ):
+def add_to_db(user_db,slowo_pl,slowo_ang ):
     login_list = []
-    mycursor.execute(f"SELECT {what_select} FROM Users WHERE nickname = '{where_select}' ")
+    mycursor.execute(f"INSERT INTO fiszki_{user_db} (po_pol, po_ang) ")
 
     for x in mycursor:
         login_list.append(x)
@@ -32,7 +29,7 @@ def select_from_db(what_select,  where_select ):
     del value[-3:]
     login_ok = "".join(value)
     login_ok = str(login_ok)
-    
+
     return login_ok
 
 def count_words(user_login):
@@ -44,6 +41,8 @@ def count_words(user_login):
 
 
     return len(word_list)
+
+
 
 def prepare_words(user_login):
 
@@ -76,11 +75,13 @@ def prepare_words(user_login):
         del value[-3:]
         login_ok = "".join(value)
         login_ok = str(login_ok)
-        
+        print(login_ok)
         words_list_ok_ang.append(login_ok)
 
     words_dict = dict(zip(words_list_ok_pl,words_list_ok_ang))
 
     
-    return words_dict
+    return words_dict 
     
+
+
